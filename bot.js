@@ -125,23 +125,19 @@ if (!rank) return message.reply(' ')
     message.delete();
   }
 });
-client.on('message', message => {
-  if (message.author.bot) return;
-  let args = message.content.split(" ").slice(1);
-  if (message.content === "-say") {
-    message.channel.sendMessage(args).join(" ")).catch(console.error);
-  }
-
 
 });
-client2.on('message', message => {
-  if (message.author.bot) return;
-  let args = message.content.split(" ").slice(1);
-  if (message.content === "-say") {
-    message.channel.sendMessage(args).catch(console.error);
+client.on('message', msg =>{
+        let args = msg.content.slice(4);
+  if (msg.content.startsWith('-say')) {
+   msg.channel.send(args)   
   }
-
-
-});
+})
+client2.on('message', msg =>{
+        let args = msg.content.slice(4);
+  if (msg.content.startsWith('-say')) {
+   msg.channel.send(args)   
+  }
+})
 client.login(process.env.TOKEN);
 client2.login(process.env.TOKEN2);
