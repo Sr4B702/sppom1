@@ -126,7 +126,6 @@ if (!rank) return message.reply(' ')
   }
 });
 
-});
 client.on('message', msg =>{
         let args = msg.content.slice(4);
   if (msg.content.startsWith('-say')) {
