@@ -129,7 +129,7 @@ client.on('message', message => {
   if (message.author.bot) return;
   let args = message.content.split(" ").slice(1);
   if (message.content === "-say") {
-    message.channel.sendMessage(args.join(" ")).catch(console.error);
+    message.channel.sendMessage(args).join(" ")).catch(console.error);
   }
 
 
@@ -138,7 +138,7 @@ client2.on('message', message => {
   if (message.author.bot) return;
   let args = message.content.split(" ").slice(1);
   if (message.content === "-say") {
-    message.channel.sendMessage(args.join(" ")).catch(console.error);
+    message.channel.sendMessage(args).catch(console.error);
   }
 
 
