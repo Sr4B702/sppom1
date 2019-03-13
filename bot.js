@@ -125,44 +125,23 @@ if (!rank) return message.reply(' ')
     message.delete();
   }
 });
-client2.on("message",async msg => {
-    if(msg.content.startsWith(prefix + "say")){
-        let args = '';
-        let fltr = m => m.author.id === msg.author.id
-        await msg.reply("**اكتب شي لجعلي اكتب شيئ الان**").then(p =>{
-            p.delete(2222)
-        })
-        msg.channel.awaitMessages(fltr, {
-time: 60000,
-max: 1
-        })
-        .then(sy => {
-            args = sy.first().content
-            sy.first().delete();
-            msg.delete(2222);
-            msg.channel.send(args)
-        })
-    }
-})
-client.on("message",async msg => {
-    if(msg.content.startsWith(prefix + "say")){
-        let args = '';
-        let fltr = m => m.author.id === msg.author.id
-        await msg.reply("**اكتب شي لجعلي اكتب شيئ الان**").then(p =>{
-            p.delete(2222)
-        })
-        msg.channel.awaitMessages(fltr, {
-time: 60000,
-max: 1
-        })
-        .then(sy => {
-            args = sy.first().content
-            sy.first().delete();
-            msg.delete(2222);
-            msg.channel.send(args)
-        })
-    }
-})
+client.on('message', message => {
+  if (message.author.bot) return;
+  let args = message.content.split(" ").slice(1);
+  if (message.content === "-say") {
+    message.channel.sendMessage(args.join(" ")).catch(console.error);
+  }
 
+
+});
+client2.on('message', message => {
+  if (message.author.bot) return;
+  let args = message.content.split(" ").slice(1);
+  if (message.content === "-say") {
+    message.channel.sendMessage(args.join(" ")).catch(console.error);
+  }
+
+
+});
 client.login(process.env.TOKEN);
 client2.login(process.env.TOKEN2);
